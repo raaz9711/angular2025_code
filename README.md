@@ -1,6 +1,6 @@
 ```markdown
 # Signal
 
-![Project Logo](./public/signal.png)
+![Project Logo](https://github.com/raaz9711/angular2025_code/blob/main/public/signal.png)
 
 ```
