@@ -1,0 +1,14 @@
+<!-- <div class="widget-header" style="margin: 2px;padding: 4px;border: 2px solid red;"> -->
+<div class="widget-header" style="margin: 2px;padding: 4px;border: 2px solid red;">
+   <ng-content select="[slot='header']"></ng-content>
+   <!-- <ng-content select="[header]"></ng-content> -->
+
+    <!-- <ng-content select=".widget-title,.widget-sub-title"></ng-content> -->
+</div>
+<!-- <div class="widget-content" style=" margin: 2px; padding: 4px;border: 2px solid purple;"> -->
+
+<div class="widget-content" style=" margin: 2px; padding: 4px;border: 2px solid purple;">
+    <!-- <div class="sky-condition">☀️</div>
+    <div class="temperature">21° C</div> -->
+    <ng-content> ... No Content</ng-content>
+</div>
