@@ -1,15 +1,27 @@
 import { Component, inject } from '@angular/core';
-import { AnimalService } from '../animal.service';
+import { GrandChildComponent } from "../grand-child/grand-child.component";
+import { FreeapiService } from '../freeapi.service';
 
 @Component({
   selector: 'app-child',
-  imports: [],
+  imports: [GrandChildComponent],
   templateUrl: './child.component.html',
-  styleUrl: './child.component.css',
-    viewProviders: [{provide:AnimalService, useValue: {emoji: '🐶'}}],
+  styleUrl: './child.component.css'
   
 })
 export class ChildComponent {
-  animal = inject(AnimalService);
-
+constructor(private freeapiService: FreeapiService) {
+}
+list:any[] = [];
+ngOnInit() {
+  this.freeapiService.getPosts()
+  .subscribe({
+    next: (data) => {
+      this.list = data;
+    },
+    error: (error) => {
+      console.error('Error fetching posts:', error);
+    }
+  });
+}
 }
