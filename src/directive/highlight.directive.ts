@@ -6,23 +6,16 @@ import { Directive, ElementRef, HostListener, inject, input } from '@angular/cor
 })
 export class HighlightDirective {
 
-  private element = inject(ElementRef)
-
+  private el = inject(ElementRef);
+  defaultColor = input('');
   appHighlight = input('');
-  constructor() {
-    console.log('HighlightDirective initialized');
-    //this.element.nativeElement.style.backgroundColor = 'yellow';
-
-  }
-
-   @HostListener('mouseenter') onMouseEnter() {
-    this.highlight(this.appHighlight() || 'yellow');
+  @HostListener('mouseenter') onMouseEnter() {
+    this.highlight(this.appHighlight() || this.defaultColor() || 'red');
   }
   @HostListener('mouseleave') onMouseLeave() {
     this.highlight('');
   }
-   private highlight(color: string) {
-    this.element.nativeElement.style.backgroundColor = color;
+  private highlight(color: string) {
+    this.el.nativeElement.style.backgroundColor = color;
   }
-
 }
