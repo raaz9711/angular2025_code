@@ -1,4 +1,4 @@
-<h1>My First Attribute Directive</h1>
+<!-- <h1>My First Attribute Directive</h1>
 <h2>Pick a highlight color</h2>
 <div>
   <input type="radio" name="colors" (click)="color='lightgreen'">Green
@@ -19,4 +19,27 @@
 <p ngNonBindable>This should not evaluate: {{ 1 + 1 }}</p>
 <h3>ngNonBindable with a directive</h3>
 <div ngNonBindable [appHighlight]="'yellow'">This should not evaluate: {{ 1 +1 }}, but will highlight yellow.
-</div>
+</div> -->
+
+
+<main>  
+  <h1>Structural Directive</h1>
+  <!-- here 2000 is binfing with hideAfter input and counter is readable because 
+  context is passed to the template.
+  The template is rendered after 2000 ms and the counter is updated every 1000 ms
+  The default value is also passed to the template as myDefault.
+  The template is rendered with the context values. 
+  -->
+  <section [style.border] ="'2px solid black'"  *hideAfter="2000 as t;then placeholder;let countDown = counter ; let default"> 
+    <h1>Temp Content</h1>
+    <p>This will hide after {{t}} - {{default}} ms. -- {{countDown}}</p>
+  </section>
+<ng-template #placeholder let-val="hideAfter" let-myDefault>
+  <section [style.border] ="'2px solid purple'"  > 
+    <h1>Place Holder</h1>
+    <p>This is the placeholder after 5000 ms.</p>
+    <p>Counter: {{val}} || {{myDefault}}</p>
+  </section>
+</ng-template>
+
+</main>

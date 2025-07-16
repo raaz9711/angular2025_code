@@ -1,9 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HighlightDirective } from '../directive/highlight.directive';
+import { HideAfterDirective } from '../directive/structrual/hide-after.directive';
 @Component({
   selector: 'app-root',
-  imports: [HighlightDirective],
+  imports: [
+    
+    //HighlightDirective,
+    HideAfterDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
