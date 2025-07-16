@@ -21,8 +21,13 @@
 <div ngNonBindable [appHighlight]="'yellow'">This should not evaluate: {{ 1 +1 }}, but will highlight yellow.
 </div> -->
 
+<main [style.border]="'5px solid black'">  
+  <h4> Built In Structural Directive</h4>
+  <app-built-in-exam></app-built-in-exam>
+</main>
 
-<main>  
+
+<main [style.border]="'5px solid red'">  
   <h1>Structural Directive</h1>
   <!-- here 2000 is binfing with hideAfter input and counter is readable because 
   context is passed to the template.
@@ -30,7 +35,7 @@
   The default value is also passed to the template as myDefault.
   The template is rendered with the context values. 
   -->
-  <section [style.border] ="'2px solid black'"  *hideAfter="2000 as t;then placeholder;let countDown = counter ; let default"> 
+  <section [style.border] ="'2px solid black'"  *hideAfter="5000 as t;then placeholder;let countDown = counter ; let default"> 
     <h1>Temp Content</h1>
     <p>This will hide after {{t}} - {{default}} ms. -- {{countDown}}</p>
   </section>

@@ -1,6 +1,27 @@
-```markdown
-# Signal
+✅ Complete List of Common Built-in Angular Directives
+Structural:
 
-![Project Logo](https://github.com/raaz9711/angular2025_code/blob/main/public/signal.png?raw=true)
+*ngIf
+*ngFor
+*ngSwitch
+*ngSwitchCase
+*ngSwitchDefault
+*ngTemplateOutlet
+ng-container
+ng-template
+Attribute:
 
-```
+ngClass
+ngStyle
+ngModel
+ngModelGroup
+ngPlural
+ngPluralCase
+Special Form Directives (Reactive/Template-driven):
+
+formGroup
+formControl
+formControlName
+ngForm
+ngSubmit
+ngModel

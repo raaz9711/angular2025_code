@@ -1,0 +1,124 @@
+<!-- *ngIf Example -->
+
+<!-- <div *ngIf="condition">Content</div> -->
+
+<button (click)="toggleLogin()">Click for Toggle ngIf</button>
+
+<div *ngIf="isLoggedIn; else notLogged">
+    <p>Welcome, user!</p>
+</div>
+
+<ng-template #notLogged>
+    <div>
+  <p>Please log in.</p>
+  </div>
+</ng-template>
+
+<p>-----NgFor-----</p>
+<ul>
+  <li *ngFor="let product of products; let i = index">
+    {{ i + 1 }}. {{ product.name }} - ${{ product.price }}
+  </li>
+</ul>
+<p>-----NgFor with trackBy-----</p>
+
+<p>----- NgClass -------</p>
+<button (click)="toggleActive()">Click for Active ngClass</button>
+
+
+<p [ngClass]="{'active': isActive, 'inactive': !isActive}">
+  Status: {{ isActive ? 'Active' : 'Inactive' }}
+</p>
+<p>---- NgClass ------</p>
+<p>----- NgStyle -------</p>
+
+<button (click)="updaefontSize()"> Increase Font Size</button>
+
+<div [ngStyle]="{'color': textColor, 'font-size.px': fontSize}">
+  Dynamic Style Text
+</div>
+
+<p>-- NgStyle -----------</p>
+
+<p>----NgPlural -------</p>
+
+<!-- 
+✅ 1. ngPlural and ngPluralCase
+
+Purpose: Display different templates based on a numeric value (pluralization logic).
+Used when: You want to show messages like “1 item” vs “2 items”.
+ -->
+
+<button (click)="removeitem()"> Remove Item</button>
+
+<div [ngPlural]="items.length">
+  <ng-template ngPluralCase="=0">No items available</ng-template>
+  <ng-template ngPluralCase="=1">One item available</ng-template>
+  <ng-template ngPluralCase="other">{{ items.length }} items available</ng-template>
+</div>
+
+<p>---end-------</p>
+
+<p>---- NgtemplateOutlet ----</p>
+<!-- <ng-container *ngTemplateOutlet="templateRef"></ng-container> -->
+
+<!-- <ng-template #templateRef let-message>
+  <h2>Template Content</h2>
+  <p>This is a reusable template.</p>
+  <p>{{ message }}</p>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="templateRef; context: { $implicit: 'Raj Kumar' }"></ng-container> -->
+
+<!-- 
+✅ 2. ngTemplateOutlet
+
+Purpose: Dynamically render a template reference in the DOM.
+Used when: You have a reusable template and want to display it in multiple places. 
+-->
+
+
+<ng-template #greeting>
+  <p>Hello, welcome to Angular!</p>
+</ng-template>
+
+<!-- Render the template here -->
+<ng-container *ngTemplateOutlet="greeting"></ng-container>
+
+
+
+
+<p>---------</p>
+
+
+<!-- 
+✅ 3. ng-container
+
+Purpose: Acts as a logical container without adding an extra DOM element.
+Used when: You need a wrapper for directives without introducing unnecessary HTML. 
+-->
+
+<p>------ ng-container ------</p>
+
+<ng-container *ngIf="isLoggedIn">
+  <p>Welcome!</p>
+  <p>Your profile is ready.</p>
+</ng-container>
+<p>----------------</p>
+
+<!-- 
+✅ 4. ng-template
+
+Purpose: Define an Angular template that is not rendered by default.
+Used when: You want to create reusable or conditional templates. 
+
+-->
+
+<ng-template #noData>
+  <p>No data found!</p>
+</ng-template>
+
+<div *ngIf="items.length; else noData">
+  <p>We have items!</p>
+</div>
+<p>----------------</p>
