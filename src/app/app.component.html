@@ -20,6 +20,19 @@
 <h3>ngNonBindable with a directive</h3>
 <div ngNonBindable [appHighlight]="'yellow'">This should not evaluate: {{ 1 +1 }}, but will highlight yellow.
 </div> -->
+<main [style.border]="'5px solid black'">  
+  <p>Output Directive</p>
+<app-my-output></app-my-output>
+</main>
+
+
+<main [style.border]="'5px solid black'">  
+  <h4> Built In Structural Directive</h4>
+<app-my-input></app-my-input>
+</main>
+
+
+
 
 <main [style.border]="'5px solid black'">  
   <h4> Built In Structural Directive</h4>
