@@ -1,0 +1,48 @@
+<h4>KeyValue Pipe</h4>
+<p>Using KeyValue Pipe to display object properties:</p>
+<p>input json</p>
+<pre>{{ person | json }}</pre>  
+<p>output </p>
+<div *ngFor="let item of person | keyvalue">
+  <strong>{{ item.key }}:</strong> {{ item.value }}
+</div>
+
+<p>-------------</p>
+
+<h4>Slice Pipe</h4>
+<p>Using Slice Pipe to display a portion of an array:</p>
+<p>input json</p>
+<pre>{{ numbers | json }}</pre>
+<p>output </p>
+<div *ngFor="let number of numbers | slice:1:4">
+  {{ number }}
+</div>
+
+<h4>Custom Pipe | phoneNumberFormat</h4>
+<p>Using a custom pipe to format phone numbers:</p>
+<p>1234567890</p>
+<p>output</p>
+<p>{{ '1234567890' | phoneNumberPipe:'US' }}</p>
+
+
+<h4>Custom Pipe | customPipeName</h4>
+<p>Using a custom pipe to format phone numbers:</p>
+<p>{{numbers | json}}</p>
+<p>output</p>
+<p>{{ numbers | customPipeName:',' }}</p>
+
+<h4>Truncate Pipe | truncate</h4>
+<p>Using a custom pipe to format phone numbers:</p>
+<p>{{"raj kumar singh" | json}}</p>
+<p>output</p>
+<p>{{ 'raj kumar singh' | truncate:5 }}</p>
+
+
+
+<h4>Filter Pipe | filter</h4>
+<p>{{persons | json}}</p>
+<p>output</p>
+<p *ngFor="let person of persons | filter:'city': 'los'">
+    {{ person.name }} - {{ person.age }} - {{ person.city }}
+</p>
+
