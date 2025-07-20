@@ -86,3 +86,49 @@ Example:
 <p>{{ ['Angular', 'Pipes', '17'] | join:', ' }}</p>
 <!-- Output: Angular, Pipes, 17 -->
 
+
+# Angular Data Sharing with BehaviorSubject
+
+## 1. What is BehaviorSubject?
+
+- `BehaviorSubject` is a special type of **RxJS Subject** that **stores the latest emitted value** and sends it to new subscribers immediately.
+- Unlike a regular `Subject` (which only emits values to subscribers who are already listening), a `BehaviorSubject` **remembers the last emitted value** and instantly provides it to any new subscriber.
+
+### **Example**
+```ts
+import { BehaviorSubject } from 'rxjs';
+
+const subject = new BehaviorSubject<number>(0);  // initial value = 0
+
+subject.subscribe(val => console.log('Subscriber A:', val));
+
+subject.next(1);  // Subscriber A: 1
+subject.next(2);  // Subscriber A: 2
+
+subject.subscribe(val => console.log('Subscriber B:', val)); 
+// Subscriber B immediately gets the last value -> 2
+
+subject.next(3); 
+// Both subscribers get 3 -> Subscriber A: 3, Subscriber B: 3
+
+# Angular Services: HTTP & Component Data Sharing
+
+This guide explains how to:
+1. Use Angular **HttpClient** for API calls (GET, POST, PUT, PATCH, DELETE).
+2. Share data between components using **BehaviorSubject**.
+
+---
+
+## **1. HttpClient in Angular**
+
+`HttpClient` is used to interact with REST APIs. It returns data as **Observables**, which can be subscribed to in components.
+
+### **Setup**
+Add `HttpClientModule` in your `app.module.ts`:
+```ts
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  imports: [HttpClientModule]
+})
+export class AppModule {}
