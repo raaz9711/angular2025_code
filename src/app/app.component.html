@@ -1,1 +1,51 @@
-<h2>Basic Branch - {{title}}</h2>
+<h2>Input</h2>
+
+<div style="border: 1px solid black; padding: 10px;">
+    <app-input-main></app-input-main>
+</div>
+
+<h4><Output></Output></h4>
+
+<div style="border: 1px solid black; padding: 10px;">
+    <app-output-main></app-output-main>
+</div>
+
+<h4>share data between component</h4>
+
+<div style="border: 1px solid black; padding: 10px;">
+<app-a-component></app-a-component>
+<hr>
+<app-b-component></app-b-component>
+</div>
+
+<br>
+
+<div style="border: 1px solid black; padding: 10px;">
+  <h4> -----  &#64;ViewChild --------</h4>  
+<pre>
+    <!-- &#64; code for html -->
+&#64;ViewChild is used in Angular to access a child component's properties and methods directly from a parent component.
+
+It is useful when you want the parent to directly manipulate or read data from the child.
+This is not recommended for all cases as it tightly couples the parent and child components, but it's useful when:
+You want to call a child component's method.
+You want to read or modify a child component's property.
+
+Key Points
+&#64;ViewChild(ChildComponent) gives a reference to the child component instance.
+We can call child.changeValue() or access child.value directly from the parent.
+You should only access the &#64;ViewChild in or after the ngAfterViewInit() lifecycle hook, because the child must be initialized.
+
+<hr>
+<app-view-parent></app-view-parent>
+</pre>
+</div>
+
+
+<div style="border: 1px solid black; padding: 10px;">
+<p>---- Ngrx Example</p>
+<app-counter-a></app-counter-a>
+<hr>
+<app-counter-b></app-counter-b>
+
+</div>

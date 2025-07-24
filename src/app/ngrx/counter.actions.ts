@@ -1,0 +1,24 @@
+import { createAction } from "@ngrx/store";
+
+export const increment = createAction('[Counter] Increment');
+export const decrement = createAction('[Counter] Decrement');
+export const reset = createAction('[Counter] Reset');
+export const setCount = createAction('[Counter] Set Count', (count: number) => ({ count }));
+// export const incrementBy = createAction('[Counter Component] Increment By', (value: number) => ({ value }));
+// export const decrementBy = createAction('[Counter Component] Decrement By', (value: number) => ({ value }));
+// export const incrementAsync = createAction('[Counter Component] Increment Async', (delay: number) => ({ delay }));
+// export const decrementAsync = createAction('[Counter Component] Decrement Async', (delay: number) => ({ delay }));
+// export const resetAsync = createAction('[Counter Component] Reset Async', (delay: number) => ({ delay }));
+// export const setCountAsync = createAction('[Counter Component] Set Count Async', (count: number, delay: number) => ({ count, delay }));
+// export const incrementByAsync = createAction        ('[Counter Component] Increment By Async', (value: number, delay: number) => ({ value, delay }));
+// export const decrementByAsync = createAction('[Counter Component] Decrement By Async', (value: number, delay: number) => ({ value, delay }));
+// export const incrementIfOdd = createAction('[Counter Component] Increment If Odd');
+// export const decrementIfEven = createAction('[Counter Component] Decrement If Even');
+// export const incrementIfMultipleOf = createAction('[Counter Component] Increment If Multiple Of', (multiple: number) => ({ multiple }));
+// export const decrementIfMultipleOf = createAction('[Counter Component] Decrement If Multiple Of', (multiple: number) => ({ multiple }));
+// export const incrementIfGreaterThan = createAction('[Counter Component] Increment If Greater Than', (threshold: number) => ({ threshold }));
+// export const decrementIfLessThan = createAction('[Counter Component] Decrement If Less Than', (threshold: number) => ({ threshold }));
+// export const incrementIfLessThan = createAction('[Counter Component] Increment If Less Than', (threshold: number) => ({ threshold }));
+// export const decrementIfGreaterThan = createAction('[Counter Component] Decrement If Greater Than', (threshold: number) => ({ threshold }));
+// export const incrementIfEqual = createAction('[Counter Component] Increment If Equal', (value: number) => ({ value }));
+// export const decrementIfEqual = createAction('[Counter Component] Decrement If Equal', (value: number) => ({ value }));
