@@ -16,7 +16,8 @@ export class SortPipe implements PipeTransform {
   ) : T[] 
   {
     console.log(items,key,dir,dir === 'asc')
-if( items == null || items == undefined || items.length === 0) return [];
+if(!items?.length) return [];    
+//if( items == null || items == undefined || items.length === 0) return [];
 const factor = dir === 'asc' ? 1 : -1;
 
 console.log(factor)
