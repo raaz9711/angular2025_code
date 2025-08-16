@@ -1,0 +1,19 @@
+Warm-up: read native element
+Goal: grab a button and focus it.
+Create @ViewChild('loginBtn', { static: true }) loginBtn!: ElementRef<HTMLButtonElement>;
+Call this.loginBtn.nativeElement.focus() inside ngOnInit.
+
+--------
+
+Child component API access
+Goal: call a child method from the parent.
+Child CounterComponent exposes increment() and reset().
+Parent uses @ViewChild(CounterComponent) counter!: CounterComponent; and triggers methods via toolbar buttons.
+
+-------
+
+Read a TemplateRef and render later
+Goal: store a template and render it conditionally.
+@ViewChild('emptyStateTpl') emptyTpl!: TemplateRef<any>;
+Use <ng-container *ngTemplateOutlet="emptyTpl"></ng-container> when list is empty.
+✅ Accept when template appears/disappears based on data.

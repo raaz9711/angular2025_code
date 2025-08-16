@@ -1,0 +1,26 @@
+<!-- your view -->
+<ng-template #emptyStateTpl>
+  <p class="muted">No items yet.</p>
+</ng-template>
+
+<ul *ngIf="items.length; else emptyOutlet">
+  <li *ngFor="let it of items">{{ it.name }}</li>
+</ul>
+
+<ng-template #emptyOutlet>
+  <!-- render the stored template -->
+  <ng-container *ngTemplateOutlet="emptyStateTpl"></ng-container>
+</ng-template>
+
+
+<ul *ngIf="items2.length; else emptyOutlet">
+  <li *ngFor="let it of items2">{{ it.name }}</li>
+</ul>
+
+<ng-template #emptyOutlet>
+  <!-- render the stored template -->
+  <ng-container *ngTemplateOutlet="emptyStateTpl"></ng-container>
+</ng-template>
+
+<button (click)="remove()">Remove</button>
+<button (click)="remove2()">Remove</button>
