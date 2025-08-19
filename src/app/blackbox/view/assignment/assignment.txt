@@ -1,19 +1,93 @@
+Progressive assignments (from easy → advanced)
 Warm-up: read native element
 Goal: grab a button and focus it.
 Create @ViewChild('loginBtn', { static: true }) loginBtn!: ElementRef<HTMLButtonElement>;
 Call this.loginBtn.nativeElement.focus() inside ngOnInit.
-
---------
-
+✅ Accept when focusing works and no null errors appear.
 Child component API access
 Goal: call a child method from the parent.
 Child CounterComponent exposes increment() and reset().
 Parent uses @ViewChild(CounterComponent) counter!: CounterComponent; and triggers methods via toolbar buttons.
-
--------
-
+✅ Accept when parent buttons change child state without @Output.
 Read a TemplateRef and render later
 Goal: store a template and render it conditionally.
 @ViewChild('emptyStateTpl') emptyTpl!: TemplateRef<any>;
 Use <ng-container *ngTemplateOutlet="emptyTpl"></ng-container> when list is empty.
 ✅ Accept when template appears/disappears based on data.
+Work with ViewContainerRef for programmatic views
+Goal: insert a component dynamically.
+@ViewChild('host', { read: ViewContainerRef }) host!: ViewContainerRef;
+Create and destroy a ToastComponent instance at runtime.
+✅ Accept when multiple toasts can be created/dismissed programmatically.
+static: true vs false timing
+Goal: prove timing differences.
+One @ViewChild(..., { static: true }) read in ngOnInit.
+Another @ViewChild(..., { static: false }) read in ngAfterViewInit.
+✅ Accept when console logs show correct lifecycle availability.
+Querying directives, not just components
+Goal: read a directive instance to call its API.
+Build AutoFocusDirective with a trigger() method.
+Parent reads it: @ViewChild(AutoFocusDirective) auto!: AutoFocusDirective; and calls auto.trigger() on demand.
+✅ Accept when the directive method runs from parent.
+Multiple matches + @ViewChildren comparison
+Goal: understand when you actually need @ViewChildren.
+Place 3 InputFieldComponent instances.
+Use @ViewChildren(InputFieldComponent) fields!: QueryList<...> to loop and validate all.
+✅ Accept when you can iterate and call markAsTouched() on each.
+Access projected content vs view children
+Goal: contrast @ContentChild with @ViewChild.
+Build a Card component that projects an action button.
+Use @ContentChild('cardAction') for projected template; use @ViewChild for an internal header element.
+✅ Accept when both references work and you can explain the difference.
+Scroll management with ElementRef
+Goal: implement scrollIntoView() for a specific section.
+Use @ViewChild('sectionThree') and a “Jump to Section 3” button.
+✅ Accept when smooth scroll happens reliably.
+View cleanup & memory safety
+Goal: avoid stale references after *ngIf.
+Toggle a panel with *ngIf; attempt to use its @ViewChild reference after it’s destroyed.
+Add guards and ngAfterViewChecked checks.
+✅ Accept when no runtime errors occur while toggling.
+Host listeners + ViewChild for composition
+Goal: combine a directive capturing events with a parent reading the directive via @ViewChild.
+Directive emits caret position in a text area; parent reads directive and calls getSelection().
+✅ Accept when parent can always read latest state.
+Unit testing a @ViewChild consumer
+Goal: write Jasmine tests ensuring the parent calls a child method.
+Spy on child reset(); trigger parent button; assert spy called.
+✅ Accept when test passes and covers lifecycle timing.
+Mini real-world projects
+A) Modal/Drawer service (dynamic injection)
+Host <ng-template #portalHost> in AppComponent.
+Service holds a ViewContainerRef set by @ViewChild('portalHost', { read: ViewContainerRef }).
+API: open(component, inputs), closeAll().
+✅ Open/close any component as a modal from anywhere.
+B) Toast/Notification system
+Similar to A, but stack multiple toasts; auto-dismiss timers.
+✅ Multiple concurrent toasts, manual close, and queue handling.
+C) Rich text editor toolbar
+@ViewChild('editorArea') to access contenteditable div.
+Buttons call applyBold(), applyLink(), etc., via native selection ranges.
+✅ Toolbar transforms selected text reliably.
+D) Table row actions with row component refs
+Parent uses @ViewChildren(RowComponent) to run expand() on a row programmatically (e.g., after search).
+✅ Search → find row → scroll & expand that row.
+E) Stepper/Workflow controller
+Parent holds steps as child components; @ViewChildren(StepComponent) to compute progress, lock/unlock, and goTo(stepIndex).
+✅ Keyboard navigation and validation before advancing.
+Must-know use cases (cheat-sheet)
+Call child public APIs (forms: markAllAsTouched, reset, custom load()).
+Imperative focus/selection on inputs for accessibility.
+Programmatic view creation with ViewContainerRef (modals, toasts, portals, loaders).
+Reading TemplateRef for placeholders/empty states/skeletons.
+Scroll management (scroll to element, sticky headers).
+Measuring DOM (offset, boundingRect) for popovers/positioning (use Renderer2 when mutating).
+Working with directives as the query token (feature toggles, validators).
+Combining with @ViewChildren for batch operations.
+Important pitfalls & best practices
+Lifecycle: static: true is available in ngOnInit; default (false) only after ngAfterViewInit.
+*ngIf destroys the view → your ViewChild becomes undefined. Always null-check.
+Prefer public child methods over reaching into nativeElement unless necessary (DOM).
+Avoid direct styling on nativeElement; use Renderer2 for safety & SSR friendliness.
+Don’t overuse ViewChild where unidirectional data flow (@Input/@Output) suffices.
+In tests, call fixture.detectChanges() twice if you rely on ngAfterViewInit.
