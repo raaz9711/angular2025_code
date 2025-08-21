@@ -1,14 +1,14 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
   selector: '[appAutofocus]'
 })
 export class AutofocusDirective {
 
-  constructor() { }
+  constructor(private el : ElementRef) { }
 
   trigger(){
-    
+    this.el.nativeElement.focus();
   }
 
 }

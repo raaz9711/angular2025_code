@@ -10,10 +10,16 @@ import { Assignment2Component } from "./blackbox/view/assignment/assignment2/ass
 import { Assignment3Component } from "./blackbox/view/assignment/assignment3/assignment3.component";
 import { HostComponent } from "./blackbox/viewref/host/host.component";
 import { Assignment4Component } from "./blackbox/view/assignment/assignment4/assignment4.component";
+import { Assignment5Component } from "./blackbox/view/assignment/assignment5/assignment5.component";
+import { Assignment6Component } from "./blackbox/view/assignment/assignment6/assignment6.component";
+import { CardComponent } from "./blackbox/view/assignment/assignment7/app7";
+import { ScrollDemoComponent } from "./blackbox/view/assignment/assignment8/app8";
+import { TogglePanelComponent } from "./blackbox/view/assignment/app9/app9";
+import { CaretParentComponent } from "./blackbox/view/assignment/app10/app10";
 
 @Component({
   selector: 'app-root',
-  imports: [Assignment1Component, Assignment2Component, Assignment3Component, HostComponent, Assignment4Component],
+  imports: [Assignment1Component, Assignment2Component, Assignment3Component, HostComponent, Assignment4Component, Assignment5Component, Assignment6Component, CardComponent, ScrollDemoComponent, TogglePanelComponent, CaretParentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

@@ -1,0 +1,9 @@
+.ayush{
+    font-size: 100px;
+}
+
+.ayush:hover{
+/* font-size: 100px; */
+color : black;
+background-color: gray;
+}
